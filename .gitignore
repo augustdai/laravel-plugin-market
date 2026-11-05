@@ -1,0 +1,7 @@
+.idea
+.php_cs.cache
+/node_modules
+package-lock.json
+/images/
+pre-dist
+*.bak.*
