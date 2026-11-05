@@ -1,4 +1,4 @@
-<h2 align="center">Laravel8.x Plugin Market</h2>
+<h2 align="center">Laravel Plugin Market</h2>
 
 ## About Laravel Plugin Market
 

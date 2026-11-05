@@ -176,7 +176,7 @@ export default {
           "Content-Type": 'multipart/form-data'
         }
       }).then(response => {
-        this.version.logo = response?.data?.url;
+        this.version.logo = response?.data?.data?.url; // 统一上传接口把载荷包在 data 里
         this.alertSuccess("上传成功！", 3000);
       })
     },

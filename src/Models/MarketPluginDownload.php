@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MarketPluginDownload extends Model
 {
+
+    protected $table = 'market_plugin_downloads';
+
+
     use HasFactory;
 
     protected $fillable = ['plugin_version_id', 'user_id'];

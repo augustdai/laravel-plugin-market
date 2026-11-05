@@ -1,6 +1,6 @@
 <?php
 
-namespace Jyim\LaravelPluginMarket\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +17,16 @@ use Jyim\LaravelPluginMarket\ValueObjects\Money;
 class MarketPluginVersion extends Model
 {
     use HasFactory;
+
+    protected $table = 'market_plugin_versions';
+
+    /**
+     * 逻辑表名：market 域开关打开时解析为 v2_market_plugin_versions。
+     *
+     * 之前这个模型没挂 trait，写入一直落旧表，而 Admin\MarketPluginController
+     * 两张表各自维护自己的行 —— 本项目已无表名映射层。
+     * 表现为「删了应用，版本行还在旧表里」。由 v2:status 前置检查（v2 行数 ≥ 旧表）抓到。
+     */
 
     protected $fillable = ['version', 'plugin_id', 'path',  'plugin_metadata', 'price', 'type', 'status'];
 

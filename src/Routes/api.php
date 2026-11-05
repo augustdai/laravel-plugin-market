@@ -5,7 +5,6 @@ use Jyim\LaravelPluginMarket\Http\Controllers\PluginsController;
 use Jyim\LaravelPluginMarket\Http\Controllers\RegisterController;
 use Jyim\LaravelPluginMarket\Http\Controllers\LoginController;
 use Jyim\LaravelPluginMarket\Http\Controllers\UserController;
-use Jyim\LaravelPluginMarket\Http\Controllers\UploadController;
 use Jyim\LaravelPluginMarket\Http\Middleware\AdminAuthorize;
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +24,10 @@ Route::prefix("pluginmarket")->group(function (){
         Route::get("user-info", [UserController::class, "getUserInfo"]);
         Route::get("user/plugins", [UserController::class,"getPlugins"]);
         Route::post("plugins/download/{versionId}", [PluginsController::class,"download"])->middleware('throttle:10,1');
-        Route::post('upload/image',  [UploadController::class, 'image']);
+        // 上传收敛到全站唯一的 App\Http\Controllers\Common\UploadController：
+        // 原来这里自己 Storage::put('image')，既没有扩展名白名单也没有魔数校验，
+        // 而且落盘位置和 NAS 体系脱节（本地盘 storage/app），换环境就找不到文件
+        Route::post('upload/image',  [\App\Http\Controllers\Common\UploadController::class, 'upload']);
 
         Route::middleware(AdminAuthorize::class)->group(function (){
             Route::resource('users', 'UserController');

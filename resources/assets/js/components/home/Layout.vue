@@ -145,7 +145,7 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
 import Alert from "../Alert";
 
 const navigation = [
-  { name: '文档', href: 'https://docs-plugin.amin.wiki/', current: false },
+  { name: '文档', href: 'http://docs.you-tang.com/', current: false },
   { name: 'Github', href: 'https://github.com/youyingxiang/laravel-plugin', current: false },
 ]
 

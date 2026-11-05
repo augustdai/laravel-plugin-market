@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class MarketPlugin extends Model
 {
+
+    protected $table = 'market_plugins';
+
+
     use HasFactory;
 
     protected $fillable = ["plugin_name", "author_id"];
